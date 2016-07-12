@@ -1,0 +1,22 @@
+<!-- Row to display : <input type="number" step="1" min="0" max="5" ng-model="rowLimit"/> -->
+    <table>
+        <thead>
+            <tr>
+                <th ng-click="sortData('name')">Name<div ng-class="getSortClass('name')"></div></th>
+                <th ng-click="sortData('gender')">Gender<div ng-class="getSortClass('gender')"></div></th>
+                <th ng-click="city">City<div ng-class="getSortClass('city')"></div></th>
+                <th ng-click="sortData('salary')" ng-hide="hideSalary">Salary<div ng-class="getSortClass('salary')"></div></th>
+                <th ng-click="sortData('salary')" ng-show="hideSalary">Salary<div ng-class="getSortClass('salary')"></div></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="employee in employees | filter:search" >
+<!--                    <tr ng-repeat="employee in employees | filter:searchText:exactMatch" > -->
+                <td>{{ employee.name }}</td>
+                <td>{{ employee.gender | gender}}</td>
+                <td>{{ employee.city }}</td>
+                <td ng-hide="hideSalary">{{ employee.salary }}</td>
+                <td ng-show="hideSalary"> ##### </td>
+            </tr>
+        </tbody>
+    </table>
